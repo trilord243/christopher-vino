@@ -5,8 +5,8 @@ export default function CategoryGrid() {
   return (
     <section className="max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-gray-900">Comprar por Categoría</h2>
-        <p className="text-gray-500 mt-2">Encuentra la bebida perfecta para cada ocasión</p>
+        <h2 className="text-3xl font-bold text-gray-900">Nuestros Licores</h2>
+        <p className="text-gray-500 mt-2">Encuentra el licor perfecto para cada ocasión</p>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">

@@ -19,11 +19,10 @@ export default function HomePage() {
             Tu Tienda de Licores en Línea de Confianza
           </h2>
           <p className="text-gray-600 leading-relaxed">
-            En {storeConfig.name}, ofrecemos una amplia selección de vinos y licores de todo el mundo.
-            Ya sea que busques una botella para una ocasión especial, tus favoritos de siempre o un regalo único,
-            nuestra colección curada tiene algo para todos. Desde audaces Cabernet Sauvignon y suaves
-            Pinot Noir hasta whiskeys premium, tequilas artesanales y ginebras de autor — explora nuestros
-            pasillos y encuentra la bebida perfecta para cualquier momento.
+            En {storeConfig.name} encontrarás los mejores licores del mundo a precios increíbles.
+            Desde whiskeys premium y bourbons añejados hasta tequilas artesanales, vodkas importados,
+            rones caribeños, ginebras botánicas y una selecta colección de vinos — tenemos todo lo que
+            necesitas para cualquier ocasión. Explora nuestro catálogo y encuentra tu bebida favorita.
           </p>
         </div>
       </section>

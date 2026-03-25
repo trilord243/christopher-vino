@@ -20,7 +20,7 @@ export default function Footer() {
 
           {/* Categorías */}
           <div>
-            <h3 className="text-gray-900 font-semibold mb-4">Vinos y Licores</h3>
+            <h3 className="text-gray-900 font-semibold mb-4">Licores</h3>
             <ul className="space-y-2">
               {categories.slice(0, 6).map((cat) => (
                 <li key={cat.slug}>
@@ -34,7 +34,7 @@ export default function Footer() {
 
           {/* Más categorías */}
           <div>
-            <h3 className="text-gray-900 font-semibold mb-4">Más Licores</h3>
+            <h3 className="text-gray-900 font-semibold mb-4">Más Bebidas</h3>
             <ul className="space-y-2">
               {categories.slice(6).map((cat) => (
                 <li key={cat.slug}>

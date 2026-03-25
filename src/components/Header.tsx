@@ -66,7 +66,7 @@ export default function Header() {
               <input
                 type="text"
                 name="q"
-                placeholder="Buscar vinos, licores..."
+                placeholder="Buscar licores, vinos..."
                 className="w-64 bg-gray-50 border border-gray-200 rounded-full px-4 py-2 text-sm placeholder-gray-400 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400"
               />
               <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-amber-600">
