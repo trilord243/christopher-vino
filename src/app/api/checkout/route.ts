@@ -34,9 +34,9 @@ export async function POST(request: NextRequest) {
         quantity: item.quantity,
       }));
 
-    // Add shipping cost if subtotal < $100
+    // Add shipping cost if subtotal between $5 and $100
     const subtotal = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
-    if (subtotal < 100) {
+    if (subtotal >= 5 && subtotal < 100) {
       line_items.push({
         price_data: {
           currency: "usd",

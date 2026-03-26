@@ -581,7 +581,7 @@ export const products: Product[] = [
     id: "beer-001",
     name: "Corona Extra Lager",
     slug: "corona-extra-lager",
-    price: 4.99,
+    price: 1.00,
     image: "https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=500&q=80",
     category: "beer",
     description: "A refreshing, crisp pilsner-style lager with a smooth taste. Best served ice cold with a wedge of lime.",
