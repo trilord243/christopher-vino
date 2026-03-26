@@ -1,11 +1,42 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { useCart } from "@/lib/cart-context";
 import { storeConfig } from "@/lib/store-config";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, totalPrice, clearCart } = useCart();
+  const [loading, setLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: items.map((i) => ({
+            name: i.product.name,
+            price: i.product.price,
+            quantity: i.quantity,
+            image: i.product.image,
+          })),
+          origin: window.location.origin,
+        }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert(data.error || "Error al procesar el pago");
+      }
+    } catch {
+      alert("Error de conexión. Intenta de nuevo.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -99,8 +130,12 @@ export default function CartPage() {
                     </span>
                   </div>
                 </div>
-                <button className="w-full mt-6 bg-amber-700 hover:bg-amber-800 text-white py-3 rounded-lg font-semibold transition-colors">
-                  Proceder al Pago
+                <button
+                  onClick={handleCheckout}
+                  disabled={loading}
+                  className="w-full mt-6 bg-amber-700 hover:bg-amber-800 disabled:bg-amber-400 text-white py-3 rounded-lg font-semibold transition-colors"
+                >
+                  {loading ? "Procesando..." : "Proceder al Pago"}
                 </button>
                 <Link href="/" className="block text-center mt-3 text-sm text-gray-500 hover:text-amber-700">
                   Seguir Comprando

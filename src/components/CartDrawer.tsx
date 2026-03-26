@@ -1,11 +1,42 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { useCart } from "@/lib/cart-context";
 import { storeConfig } from "@/lib/store-config";
 
 export default function CartDrawer() {
   const { items, removeItem, updateQuantity, totalPrice, isOpen, setIsOpen } = useCart();
+  const [loading, setLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: items.map((i) => ({
+            name: i.product.name,
+            price: i.product.price,
+            quantity: i.quantity,
+            image: i.product.image,
+          })),
+          origin: window.location.origin,
+        }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert(data.error || "Error al procesar el pago");
+      }
+    } catch {
+      alert("Error de conexión. Intenta de nuevo.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -71,8 +102,12 @@ export default function CartDrawer() {
             <Link href="/cart" onClick={() => setIsOpen(false)} className="block w-full bg-gray-900 hover:bg-gray-800 text-white text-center py-3 rounded-lg font-medium transition-colors">
               Ver Carrito
             </Link>
-            <button className="block w-full bg-amber-700 hover:bg-amber-800 text-white text-center py-3 rounded-lg font-medium transition-colors">
-              Pagar
+            <button
+              onClick={handleCheckout}
+              disabled={loading}
+              className="block w-full bg-amber-700 hover:bg-amber-800 disabled:bg-amber-400 text-white text-center py-3 rounded-lg font-medium transition-colors"
+            >
+              {loading ? "Procesando..." : "Pagar"}
             </button>
           </div>
         )}
