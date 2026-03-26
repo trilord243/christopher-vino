@@ -75,6 +75,12 @@ export const categories: Category[] = [
     image: "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=600&q=80",
     description: "Fine cognacs and brandies for the discerning connoisseur.",
   },
+  {
+    name: "Beer",
+    slug: "beer",
+    image: "https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&q=80",
+    description: "Craft and classic beers from around the world.",
+  },
 ];
 
 export const products: Product[] = [
@@ -569,6 +575,22 @@ export const products: Product[] = [
     region: "Cognac, France",
     rating: 4.6,
     inStock: true,
+  },
+  // BEER
+  {
+    id: "beer-001",
+    name: "Corona Extra Lager",
+    slug: "corona-extra-lager",
+    price: 4.99,
+    image: "https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=500&q=80",
+    category: "beer",
+    description: "A refreshing, crisp pilsner-style lager with a smooth taste. Best served ice cold with a wedge of lime.",
+    volume: "355ml",
+    abv: "4.6%",
+    region: "Mexico",
+    rating: 4.2,
+    inStock: true,
+    featured: true,
   },
 ];
 
